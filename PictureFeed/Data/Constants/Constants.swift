@@ -10,3 +10,7 @@ import Foundation
 class UrlConst {
     static let linkUrlsImage = "https://it-link.ru/test/images.txt"
 }
+
+class ImageViewControllerText {
+    static let browserTitle = "Браузер"
+}

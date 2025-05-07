@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PictureFeedViewControllerDelegate: AnyObject {
-    func didSelectImage(url: String)
+    func didSelectImage(url: String, imageURLs: [URL], index: Int)
 }
 
 class PictureFeedViewController: UIViewController {
@@ -76,6 +76,6 @@ extension PictureFeedViewController: UICollectionViewDelegate, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let imageUrl = viewModel.images[indexPath.row].description
-        delegate?.didSelectImage(url: imageUrl)
+        delegate?.didSelectImage(url: imageUrl, imageURLs: viewModel.images, index: indexPath.row)
     }
 }

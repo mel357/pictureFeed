@@ -18,8 +18,8 @@ class ImageCoordinator {
         self.viewModel = ImageViewModel(imageUrl: imageUrl)
     }
 
-    func start() {
-        let imageViewController = ImageViewController(viewModel: viewModel)
-        navigationController.pushViewController(imageViewController, animated: false)
+    func start(imageURLs: [URL], index: Int) {
+        let imageViewController = ImageViewController(viewModel: viewModel, imageURLs: imageURLs, initialIndex: index)
+        navigationController.pushViewController(imageViewController, animated: true)
     }
 }

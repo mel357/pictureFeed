@@ -19,6 +19,10 @@ class PictureFeedViewModel {
     init(imageLoader: ImageLoader = ImageLoader()) {
         self.imageLoader = imageLoader
         monitor.pathUpdateHandler = { [weak self] path in
+            if path.status == .unsatisfied {
+                self?.failedToLoad = true
+            }
+            
             if path.status == .satisfied, self?.failedToLoad == true {
                 self?.loadImages()
             }

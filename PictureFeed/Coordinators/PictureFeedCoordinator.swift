@@ -25,8 +25,8 @@ class PictureFeedCoordinator {
 }
 
 extension PictureFeedCoordinator: PictureFeedViewControllerDelegate {
-    func didSelectImage(url: String) {
+    func didSelectImage(url: String, imageURLs: [URL], index: Int) {
         let imageCoordinator = ImageCoordinator(navigationController: navigationController, imageUrl: url)
-        imageCoordinator.start()
+        imageCoordinator.start(imageURLs: imageURLs, index: index)
     }
 }

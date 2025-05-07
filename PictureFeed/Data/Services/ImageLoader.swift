@@ -16,12 +16,14 @@ class ImageLoader {
             let linesArray = content.components(separatedBy: .newlines)
             let imageURLs = linesArray.compactMap { URL(string: $0)}
             let group = DispatchGroup()
-            var finalImageURLs: [URL] = []
-            for imgURL in imageURLs {
+            var finalImageURLs: [URL] = imageURLs
+            for (index, imgURL) in imageURLs.enumerated() {
                 group.enter()
                 checkIfImageURL(imgURL) { isImage in
-                    if isImage {
-                        finalImageURLs.append(imgURL)
+                    if !isImage {
+                        if finalImageURLs.count > index {
+                            finalImageURLs.remove(at: index)
+                        }
                     }
                     group.leave()
                 }
